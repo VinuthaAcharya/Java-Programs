@@ -1,0 +1,28 @@
+package Upcasting;
+
+	class Add
+	{
+		void add()
+		{
+			System.out.println("Adding numbers");
+		}
+	}
+	class Sub extends Add
+	{
+		void sub()
+		{
+			System.out.println("Subtracting numbers");
+		}
+	}
+	public class Upcasting_Assignment_63 extends Sub
+	{
+		void child_method()
+		{
+			System.out.println("Child Method");
+		}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

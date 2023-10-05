@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Alist.java&apos; to &apos;SeleniumAutomation/src/Collection_Assignments&apos;&#x0D;&#x0A;- Original project: &apos;SeleniumAutomation&apos;&#x0D;&#x0A;- Destination element: &apos;SeleniumAutomation/src/Collection_Assignments&apos;&#x0D;&#x0A;- Original element: &apos;ClassAssignments.Alist.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;Collection_Assignments" element1="/src&lt;ClassAssignments{Alist.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1692204083560" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,15 @@
+package ClassAssignments;
+
+public class SwitchCase_Assignment 
+{
+	public static void main(String[] args) 
+	{
+		switch(1)
+		{
+			case 1:
+				System.out.println("Case one");
+				break;
+		}
+	}
+
+}
