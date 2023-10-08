@@ -1,8 +1,5 @@
 package Collection_Assignments;
 //PriorityQueue
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.PriorityQueue;
 
 public class Priority_Queue_Class {
@@ -22,7 +19,7 @@ public class Priority_Queue_Class {
 		p2.add(89);
 		p2.add(15);
 		p2.add(985);
-		Collections.sort((List<T>) p2);
+		//Collections.sort((List<T>) p2);
 		System.out.println(p2);
 	}
 
