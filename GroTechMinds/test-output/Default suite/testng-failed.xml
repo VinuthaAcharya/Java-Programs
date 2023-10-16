@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Amazon_ParallelTesting.CCPayment">
+      <class name="Assertions.Amazon_Assertion">
         <methods>
-          <include name="creditcard"/>
+          <include name="login" invocation-numbers="1"/>
         </methods>
-      </class> <!-- Amazon_ParallelTesting.CCPayment -->
+      </class> <!-- Assertions.Amazon_Assertion -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
