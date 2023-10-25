@@ -1,17 +1,24 @@
 package Autosuggestion;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class WebsiteLink {
-
-	public static void main(String[] args) {
+public class WebsiteLink 
+{
+	static int  i,j;
+	public static void main(String[] args) throws IOException {
 		ChromeDriver driver=new ChromeDriver();
 		driver.get("https://www.amazon.in/");
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		List<WebElement> links=driver.findElements(By.tagName("a"));
 		int count=links.size();
 		System.out.println(count);
@@ -19,8 +26,39 @@ public class WebsiteLink {
 		for(int i=0;i<=count-1;i++)
 		{
 			WebElement a=links.get(i);
-			String linkname=a.getAttribute("href");
-			System.out.println(linkname);
+			String url=a.getAttribute("href");
+			System.out.println(url);
+			verifylinkifbroken(url);//method to verify the webpage contains valid/invalid links
 		}
+		System.out.println("Count of valid links are :" +i);
+		System.out.println("Count of invalid links are :" +j); 
+	}
+	public static void verifylinkifbroken(String url) throws IOException
+	{
+		try
+		{
+		URL u1=new URL(url);
+		HttpURLConnection rv=(HttpURLConnection) u1.openConnection();
+		rv.connect();
+		if(rv.getResponseCode()==200)
+		{
+			i++;
+			System.out.println("It is a valid link"+rv.getResponseCode()+rv.getResponseMessage());
+		}
+		else
+		{
+			j++;
+			System.out.println("It is a invalid link"+rv.getResponseCode()+rv.getResponseMessage());
+		}
+		}
+		catch(NullPointerException e1) 
+		{
+			System.out.println("getting null pointer exception but dont worry  I have handled this");
+		}
+		catch(MalformedURLException e2)
+		{
+			System.out.println("getting  MalformedURLException exception but dont worry  I have handled this");
+		}
+			
 	}
 }
