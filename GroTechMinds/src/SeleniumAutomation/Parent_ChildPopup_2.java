@@ -1,4 +1,5 @@
 package SeleniumAutomation;
+import java.time.Duration;
 //Launch amazon.in and reach till payment page
 import java.util.Iterator;
 import java.util.Set;
@@ -7,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 public class Parent_ChildPopup_2 
 {
@@ -15,6 +16,7 @@ public class Parent_ChildPopup_2
 	{
 		ChromeDriver driver=new ChromeDriver();
 		driver.get("https://www.amazon.in/");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
 		WebElement signin=driver.findElement(By.xpath("//span[.='Hello, sign in']"));
 		signin.click();
@@ -50,9 +52,30 @@ public class Parent_ChildPopup_2
 		Thread.sleep(2000);
 		WebElement usethisaddress=driver.findElement(By.xpath("(//input[@type='submit'])[2]"));
 		usethisaddress.click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		WebElement creditcard=driver.findElement(By.xpath("//input[@value='SelectableAddCreditCard']"));
 		creditcard.click();
+		WebElement ccdetails=driver.findElement(By.linkText("Enter card details"));
+		ccdetails.click();
+		Thread.sleep(1000);
+		WebElement frame1=driver.findElement(By.name("ApxSecureIframe"));
+		driver.switchTo().frame(frame1);
+		
+		WebElement ccnumber=driver.findElement(By.name("addCreditCardNumber"));
+		ccnumber.sendKeys("4526562362563056");
+		WebElement edate=driver.findElement(By.name("ppw-expirationDate_month"));
+		Select exdate=new Select(edate);
+		exdate.selectByVisibleText("01");
+		WebElement eyear=driver.findElement(By.name("ppw-expirationDate_year"));
+		Select exyear=new Select(eyear);
+		exyear.selectByVisibleText("2024");
+		
+		WebElement enterclick=driver.findElement(By.name("ppw-widgetEvent:AddCreditCardEvent"));
+		enterclick.click();
+		
+		driver.switchTo().defaultContent();//move back the control to default window
+		
+		//input[@value='SelectableAddCreditCard']
 		
 		//WebElement nb=driver.findElement(By.xpath("(//input[@name='ppw-instrumentRowSelection'])[3]"));
 //		WebElement creditcard=driver.findElement(By.xpath("(//input[@name='ppw-instrumentRowSelection'])[2]"));
